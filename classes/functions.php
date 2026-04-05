@@ -220,6 +220,7 @@ class conversionFunctions
         $db = eZDB::instance();
         $db->begin();
 
+     // @phpstan-ignore variable.undefined
 	    foreach( $languageArray as $language_code )
 	    {
 
@@ -249,6 +250,7 @@ class conversionFunctions
 	            }
 	            $usedAttributes[] = $value;
 	            // foreach version
+             // @phpstan-ignore variable.undefined
 	            foreach ( $objectVersions as $version )
 	            {
                     if( array_key_exists($value, $sourceObjectDataMap) )
@@ -289,6 +291,7 @@ class conversionFunctions
 	            {
 	                $attributeID = $destClassDataMap[$destAttr]->attribute( 'id' );
 	                $iter = 0;
+                 // @phpstan-ignore variable.undefined
 	                foreach ( $objectVersions as $version )
 	                {
 
@@ -303,6 +306,7 @@ class conversionFunctions
 	                    else
 	                    {
 	                        //echo "<br />version $version. newAttr $newAttr, verion[0] $objectVersions[0] ";
+                         // @phpstan-ignore variable.undefined
 	                        $clonedAttribute = $newAttribute->cloneContentObjectAttribute( $version, $objectVersions[0], $sourceObjectID );
 	                        $clonedAttribute->setContent( $sourceObjectDataMap[$sourceAttr]->content() );
 	                        conversionFunctions::customConverter( $clonedAttribute, $sourceObjectDataMap[$sourceAttr], $destClassDataMap[$destAttr] );
@@ -321,6 +325,7 @@ class conversionFunctions
 	            {
 	                $attributeID = $destClassDataMap[$newAttr]->attribute( 'id' );
 	                $iter = 0;
+                 // @phpstan-ignore variable.undefined
 	                foreach ( $objectVersions as $version )
 	                {
 	                    // TODO: Only for version containing current language!!!
@@ -332,6 +337,7 @@ class conversionFunctions
 	                    }
 	                    else
 	                    {
+                         // @phpstan-ignore variable.undefined
 	                        $clonedAttribute = $newAttribute->cloneContentObjectAttribute( $version, $objectVersions[0], $sourceObjectID );
 	                        $clonedAttribute->sync();
 	                    }
@@ -345,6 +351,7 @@ class conversionFunctions
 	        {
 	            if ( !in_array( $oldAttr, $usedAttributes ) )
 	            {
+              // @phpstan-ignore variable.undefined
 		            foreach ( $objectVersions as $version )
 		            {
 			            if ( !$sourceObjectDataMap[$oldAttr] instanceOf eZContentObjectAttribute )

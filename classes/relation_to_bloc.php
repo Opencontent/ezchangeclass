@@ -30,6 +30,7 @@ class HFMRelationToBloc
         
         //include_once( "lib/ezxml/classes/ezxml.php" );
         
+        // @phpstan-ignore class.notFound
         $xml = new eZXML();
         $dom = $xml->domTree( $sourceObjectAttr->DataText );
         $rel_list = $dom->get_elements_by_tagname( 'relation-item' );
